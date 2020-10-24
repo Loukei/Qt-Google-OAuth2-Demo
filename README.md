@@ -63,7 +63,9 @@ QT += network networkauth
 ```
 
 `QNetworkAccessManager` 是一個負責發送network socket的類別
+
 `QOAuth2AuthorizationCodeFlow` 負責處理發送OAuth2認證
+
 `QOAuthHttpServerReplyHandler` 負責開啟一個伺服器處理OAuth2流程
 
 接著我們載入參數，我們共需要以下幾個參數:
@@ -82,7 +84,9 @@ struct OAuth2Parameter{
 這裡你可以自行填入對應的值(hardcode)或讀取json檔的方式獲取。
 
 接著我們初始化`QOAuth2AuthorizationCodeFlow`物件，並填入對應的參數。
+
 `QOAuthHttpServerReplyHandler`會開啟一個local server負責監聽對應的port並與google伺服器交換認證必要的資訊。
+
 `setModifyParametersFunction()`負責修改OAuth2認證流程的參數，這裡我們後面再詳談。
 
 ``` c++
@@ -130,7 +134,9 @@ void MainWindow::onGoogleGranted()
 開啟認證流程只要呼叫`void QOAuth2AuthorizationCodeFlow::grant()`即可，你可以自行選擇使用按鈕、快速鍵、或任意方式觸發此函數。
 
 更新access token:
+
 每家OAuth2 api所採用的token更新方式不同，有的並不會提供refresh token，而所需的參數不同。
+
 以google而言，可以參考[Google identify platform][ref 3]的內容，簡而言之，當你開啟瀏覽器的時候，一般開啟的URL會如同這樣:
 
 ```
